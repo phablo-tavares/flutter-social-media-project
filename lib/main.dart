@@ -6,9 +6,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:rede_social_flutter/firebase_options.dart';
-import 'package:rede_social_flutter/src/core/bindings/initial_bindings.dart';
 import 'package:rede_social_flutter/src/core/routers/app_routes.dart';
 import 'package:rede_social_flutter/src/modules/splash/presentation/pages/splash_page.dart';
+//TODO criar sistema de tradução do app
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

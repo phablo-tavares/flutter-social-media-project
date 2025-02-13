@@ -15,7 +15,7 @@ class SplashController extends GetxController {
   void redirectAccordingToCurrentUserAuthState() {
     //Validar depois se este listener deve ficar aqui ou ser importado de outro lugar
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user != null) {
+      if (user == null) {
         log('User is currently signed out!');
         Get.toNamed(AuthRoutes.login);
       } else {

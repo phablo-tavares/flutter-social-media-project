@@ -1,8 +1,14 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rede_social_flutter/src/modules/auth/data/datasource/auth_datasource.dart';
 
 class LoginController extends GetxController {
+  LoginController({
+    required this.authDatasource,
+  });
+  AuthDatasource authDatasource;
+
   TextEditingController emailField = TextEditingController();
   TextEditingController passwordField = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
@@ -30,5 +36,19 @@ class LoginController extends GetxController {
 
   void togglePasswordVisible() {
     isPasswordVisible.value = !isPasswordVisible.value;
+  }
+
+  Future<void> signInWithEmailAndPassword() async {
+    try {
+      await authDatasource.signInWithEmailAndPassword(
+        email: emailField.text,
+        password: passwordField.text,
+      );
+    } catch (e) {
+      Get.snackbar(
+        'Falha ao logar',
+        e.toString(),
+      );
+    }
   }
 }

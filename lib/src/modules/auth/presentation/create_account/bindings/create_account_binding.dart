@@ -5,7 +5,9 @@ class CreateAccountBinding extends Bindings {
   @override
   void dependencies() {
     Get.put(
-      CreateAccountController(),
+      CreateAccountController(
+        authDatasource: Get.find(),
+      ),
     );
   }
 }

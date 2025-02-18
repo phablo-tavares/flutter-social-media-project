@@ -93,9 +93,9 @@ class CreateAccountPage extends GetView<CreateAccountController> {
       ),
       floatingActionButton: ElevatedButton(
         child: const Text('Criar conta'),
-        onPressed: () {
+        onPressed: () async {
           if (controller.createAccountFormKey.currentState!.validate()) {
-            Get.snackbar('Sucesso', 'Conta criada com sucesso!!');
+            await controller.createAccount();
             Get.offAllNamed(AuthRoutes.login);
           }
         },

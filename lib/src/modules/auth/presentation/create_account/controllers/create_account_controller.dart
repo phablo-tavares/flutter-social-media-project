@@ -1,8 +1,16 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:rede_social_flutter/src/modules/auth/data/datasource/auth_datasource.dart';
+import 'package:rede_social_flutter/src/modules/auth/data/dtos/phone_dto.dart';
+import 'package:rede_social_flutter/src/modules/auth/data/dtos/user_dto.dart';
 
 class CreateAccountController extends GetxController {
+  CreateAccountController({
+    required this.authDatasource,
+  });
+  AuthDatasource authDatasource;
+
   TextEditingController nameField = TextEditingController();
   TextEditingController emailField = TextEditingController();
   TextEditingController passwordField = TextEditingController();
@@ -73,5 +81,27 @@ class CreateAccountController extends GetxController {
 
   void togglePasswordVisible() {
     isPasswordVisible.value = !isPasswordVisible.value;
+  }
+
+  Future<void> createAccount() async {
+    try {
+      await authDatasource.createAccountFirebaseAuth(
+        email: emailField.text,
+        password: passwordField.text,
+      );
+      UserDto user = UserDto(
+        email: emailField.text,
+        name: nameField.text,
+        phone: PhoneDto(
+          ddd: selectedDDD,
+          phoneNumber: phoneNumberField.text,
+        ),
+      );
+      await authDatasource.createUserFirestore(user: user);
+      Get.snackbar('Sucesso', 'Conta criada com sucesso!');
+    } catch (e) {
+      Get.snackbar(
+          'Erro', 'Falha ao criar cadastro, tente novamente. Se persistir entre em contato com o suporte.');
+    }
   }
 }

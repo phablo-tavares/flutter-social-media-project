@@ -8,8 +8,10 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:rede_social_flutter/firebase_options.dart';
 import 'package:rede_social_flutter/src/core/routers/app_routes.dart';
 import 'package:rede_social_flutter/src/modules/splash/presentation/pages/splash_page.dart';
-//TODO criar sistema de tradução do app
 
+//TODO proximo passo: testar criação de cadastro e login
+//TODO redirecionar qualquer tentativa de acesso direto (via url) de outras rotas do auth para o login.
+//TODO criar sistema de tradução do app
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

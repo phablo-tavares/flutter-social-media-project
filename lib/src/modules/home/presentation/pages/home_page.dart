@@ -11,8 +11,18 @@ class HomePage extends GetView<HomeController> {
       appBar: AppBar(
         title: const Text('HOME PAGE APP BAR!!'),
       ),
-      body: const Center(
-        child: Text('HOME PAGE!!!'),
+      body: Center(
+        child: Column(
+          children: [
+            const Text('HOME PAGE!!!'),
+            GestureDetector(
+              child: const Icon(Icons.logout),
+              onTap: () {
+                controller.logout();
+              },
+            )
+          ],
+        ),
       ),
     );
   }

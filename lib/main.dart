@@ -6,12 +6,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:rede_social_flutter/firebase_options.dart';
+import 'package:rede_social_flutter/src/core/bindings/initial_bindings.dart';
 import 'package:rede_social_flutter/src/core/routers/app_routes.dart';
 import 'package:rede_social_flutter/src/modules/splash/presentation/pages/splash_page.dart';
 
-//TODO proximo passo: testar criação de cadastro e login
-//TODO redirecionar qualquer tentativa de acesso direto (via url) de outras rotas do auth para o login.
+//TODO proximo passo: testar todo o fluxo do app e corrigir erros
 //TODO criar sistema de tradução do app
+//TODO Usar camera awesome
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -57,6 +58,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       home: const SplashPage(),
+      initialBinding: InitialBindings(),
       unknownRoute: appPages.last,
     );
   }

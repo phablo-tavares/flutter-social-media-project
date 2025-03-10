@@ -15,6 +15,7 @@ class UserDto {
   factory UserDto.fromJson(Map<String, dynamic> json) => _$UserDtoFromJson(json);
   Map<String, dynamic> toJson() => _$UserDtoToJson(this);
 
+  //TODO ver como fazer com que o firestore ignore este campo id ao salvar um novo usuário
   String? id;
   String? email;
   String? name;

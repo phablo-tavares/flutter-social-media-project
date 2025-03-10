@@ -96,7 +96,6 @@ class CreateAccountPage extends GetView<CreateAccountController> {
         onPressed: () async {
           if (controller.createAccountFormKey.currentState!.validate()) {
             await controller.createAccount();
-            Get.offAllNamed(AuthRoutes.login);
           }
         },
       ),

@@ -85,10 +85,6 @@ class CreateAccountController extends GetxController {
 
   Future<void> createAccount() async {
     try {
-      await authDatasource.createAccountFirebaseAuth(
-        email: emailField.text,
-        password: passwordField.text,
-      );
       UserDto user = UserDto(
         email: emailField.text,
         name: nameField.text,
@@ -98,10 +94,16 @@ class CreateAccountController extends GetxController {
         ),
       );
       await authDatasource.createUserFirestore(user: user);
+      await authDatasource.createAccountFirebaseAuth(
+        email: emailField.text,
+        password: passwordField.text,
+      );
       Get.snackbar('Sucesso', 'Conta criada com sucesso!');
     } catch (e) {
       Get.snackbar(
-          'Erro', 'Falha ao criar cadastro, tente novamente. Se persistir entre em contato com o suporte.');
+        'Erro',
+        'Falha ao criar cadastro, tente novamente. Se persistir entre em contato com o suporte.',
+      );
     }
   }
 }

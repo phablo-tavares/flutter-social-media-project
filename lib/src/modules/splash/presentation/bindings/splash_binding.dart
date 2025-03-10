@@ -4,6 +4,8 @@ import 'package:rede_social_flutter/src/modules/splash/presentation/controllers/
 class SplashBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(SplashController());
+    Get.put(
+      SplashController(),
+    );
   }
 }

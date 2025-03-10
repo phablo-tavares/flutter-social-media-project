@@ -73,9 +73,9 @@ class LoginPage extends GetView<LoginController> {
       ),
       floatingActionButton: ElevatedButton(
         child: const Text('Login'),
-        onPressed: () {
+        onPressed: () async {
           if (controller.loginFormKey.currentState!.validate()) {
-            Get.snackbar('teste', 'deu certo');
+            await controller.signInWithEmailAndPassword();
           }
         },
       ),

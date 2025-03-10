@@ -36,7 +36,9 @@ class AuthDatasource {
       );
     } on FirebaseAuthException catch (e) {
       String message = '';
-      if (e.code == 'user-not-found') {
+      if (e.code == 'invalid-credential') {
+        message = 'The supplied auth credential is incorrect, malformed or has expired.';
+      } else if (e.code == 'user-not-found') {
         message = 'No user found for that email.';
       } else if (e.code == 'wrong-password') {
         message = 'Wrong password provided for that user.';
@@ -49,10 +51,32 @@ class AuthDatasource {
     required UserDto user,
   }) async {
     try {
+      Map<String, dynamic> phoneJson = user.phone!.toJson();
       Map<String, dynamic> userJson = user.toJson();
+      userJson['phone'] = phoneJson;
       await db.collection('Users').add(userJson);
     } catch (e) {
       throw Exception('Erro ao criar cadastro do usuário no Firestore: ${e.toString()}');
+    }
+  }
+
+  Future<void> sendPasswordResetEmail({
+    required String email,
+  }) async {
+    try {
+      await firebaseAuth.sendPasswordResetEmail(
+        email: email,
+      );
+    } catch (e) {
+      throw Exception('Erro ao resetar senha: ${e.toString()}');
+    }
+  }
+
+  Future<void> signOut() async {
+    try {
+      await firebaseAuth.signOut();
+    } catch (e) {
+      throw Exception('Erro ao fazer logout: ${e.toString()}');
     }
   }
 }

@@ -6,13 +6,6 @@ class LoginBindings extends Bindings {
   @override
   void dependencies() {
     Get.put(
-      AuthDatasource(
-        firebaseAuth: Get.find(),
-        db: Get.find(),
-      ),
-    );
-
-    Get.put(
       LoginController(
         authDatasource: Get.find<AuthDatasource>(),
       ),

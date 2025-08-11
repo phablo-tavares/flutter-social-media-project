@@ -1,4 +1,4 @@
-# Rede Social Flutter
+# Rede Social Flutter (Em Desenvolvimento)
 
 Aplicativo mobile de rede social desenvolvido em Flutter, com integração ao Firebase para autenticação, armazenamento e gerenciamento de dados.
 

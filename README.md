@@ -1,16 +1,33 @@
-# rede_social_flutter
+# Rede Social Flutter
 
-A new Flutter project.
+Aplicativo mobile de rede social desenvolvido em Flutter, com integração ao Firebase para autenticação, armazenamento e gerenciamento de dados.
 
-## Getting Started
+## Funcionalidades
+- Cadastro e login de usuários
+- Publicação de posts com imagens e textos
+- Feed interativo
+- Curtidas e comentários
+- Perfil de usuário
 
-This project is a starting point for a Flutter application.
+## Tecnologias
+- [Flutter](https://flutter.dev)
+- [Firebase Authentication](https://firebase.google.com/products/auth)
+- [Cloud Firestore](https://firebase.google.com/products/firestore)
+- [Firebase Storage](https://firebase.google.com/products/storage)
 
-A few resources to get you started if this is your first Flutter project:
+## Como executar
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/seuusuario/seurepositorio.git
+   ```
+2. Instale as dependências:
+   ```bash
+   flutter pub get
+   ```
+3. Configure o Firebase no arquivo `google-services.json` (Android) e `GoogleService-Info.plist` (iOS).
+4. Execute o app:
+   ```bash
+   flutter run
+   ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
